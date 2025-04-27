@@ -1,4 +1,4 @@
-package com.example.coffehub.models;
+package com.example.coffehub.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "recipe")
 @Data
-public class recipe {
+public class RecipeEntity {
        @Id
         private BigInteger id;
 

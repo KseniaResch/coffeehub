@@ -1,4 +1,4 @@
-package com.example.coffehub.models;
+package com.example.coffehub.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,16 +7,17 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.math.BigInteger;
-
+import java.time.LocalDate;
 @Entity
-@Table(name = "role")
+@Table
 @Data
-
-public class worker {
-
+public class DeliveryEntity { //TODO rename models to entity && class DeliveryEntity
     @Id
     private BigInteger id;
 
+    @Column(name = "dt")
+    private LocalDate date;
+
     @Column(nullable = false)
-    private String name;
+    private String status;
 }

@@ -2,6 +2,8 @@ package com.example.coffehub.repository;
 
 import com.example.coffehub.exception.DatabaseException;
 import jakarta.persistence.EntityManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import jakarta.persistence.Query;
 
@@ -11,7 +13,7 @@ import java.util.List;
 @Repository
 public class CommonRepository {
     protected final EntityManager entityManager;
-
+    static final Logger log = LoggerFactory.getLogger(CommonRepository.class);
     public CommonRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -20,7 +22,7 @@ public class CommonRepository {
         try{
             return query.getResultList();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error("erorr in bd:\n"+ e.getMessage());
             throw new DatabaseException(e.getMessage());
         }
     }

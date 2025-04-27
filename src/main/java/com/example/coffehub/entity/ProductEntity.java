@@ -1,4 +1,4 @@
-package com.example.coffehub.models;
+package com.example.coffehub.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +12,7 @@ import java.math.BigInteger;
 @Entity
 @Table
 @Data
-public class product {
+public class ProductEntity {
     @Id
     private BigInteger id;
 
