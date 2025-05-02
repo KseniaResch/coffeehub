@@ -12,6 +12,7 @@ import java.math.BigInteger;
 @Entity
 @Data
 @NoArgsConstructor
+
 public class CheckEntity {
     @Id
     private BigInteger id;

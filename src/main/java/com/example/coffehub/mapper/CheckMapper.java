@@ -8,7 +8,7 @@ import com.example.coffehub.entity.CheckEntity;
 public class CheckMapper {
     public CheckDto toDto(CheckEntity check) {
         CheckDto dto = new CheckDto();
-      //  dto.setId(check.getId());
+        dto.setId(check.getId());
         dto.setTotal(check.getTotal());
         dto.setDiscount(check.getDiscount());
         return dto;

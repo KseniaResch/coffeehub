@@ -16,7 +16,7 @@ logging:
       - debug
       - info
   pattern:
-    file: %d{HH:mm:ss.SSS} [%thread] [%-5level] - %msg%n
+    file: "%d{HH:mm:ss.SSS} [%thread] [%-5level] - %msg%n"
 
 
   logback:
