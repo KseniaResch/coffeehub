@@ -1,0 +1,58 @@
+17:51:58.404 [main] [INFO ] - Starting CoffehubApplication using Java 23.0.1 with PID 131848 (C:\Users\kseni\Desktop\coffehub\target\classes started by kseni in C:\Users\kseni\Desktop\coffehub)
+17:51:58.407 [main] [DEBUG] - Running with Spring Boot v3.4.4, Spring v6.2.5
+17:51:58.408 [main] [INFO ] - No active profile set, falling back to 1 default profile: "default"
+17:51:59.732 [main] [INFO ] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17:51:59.759 [main] [INFO ] - Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
+17:52:00.404 [main] [INFO ] - Tomcat initialized with port 9090 (http)
+17:52:00.421 [main] [INFO ] - Starting service [Tomcat]
+17:52:00.421 [main] [INFO ] - Starting Servlet engine: [Apache Tomcat/10.1.39]
+17:52:00.490 [main] [INFO ] - Initializing Spring embedded WebApplicationContext
+17:52:00.491 [main] [INFO ] - Root WebApplicationContext: initialization completed in 2003 ms
+17:52:00.669 [main] [INFO ] - HikariPool-1 - Starting...
+17:52:01.012 [main] [INFO ] - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:fb55e7a8-def8-4c01-9700-84305c3d2ecd user=SA
+17:52:01.015 [main] [INFO ] - HikariPool-1 - Start completed.
+17:52:01.071 [main] [INFO ] - HHH000204: Processing PersistenceUnitInfo [name: default]
+17:52:01.150 [main] [INFO ] - HHH000412: Hibernate ORM core version 6.6.11.Final
+17:52:01.192 [main] [INFO ] - HHH000026: Second-level cache disabled
+17:52:01.557 [main] [INFO ] - No LoadTimeWeaver setup: ignoring JPA class transformer
+17:52:01.658 [main] [INFO ] - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+17:52:02.720 [main] [INFO ] - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17:52:02.765 [main] [INFO ] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17:52:03.013 [main] [WARN ] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17:52:03.071 [main] [INFO ] - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+17:52:03.509 [main] [WARN ] - 
+
+Using generated security password: 19e614db-dfa3-42b5-b040-004e9406ffbe
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+17:52:03.543 [main] [INFO ] - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+17:52:03.741 [main] [INFO ] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+17:52:03.798 [main] [WARN ] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+17:52:03.802 [main] [INFO ] - Closing JPA EntityManagerFactory for persistence unit 'default'
+17:52:03.809 [main] [INFO ] - HikariPool-1 - Shutdown initiated...
+17:52:03.811 [main] [INFO ] - HikariPool-1 - Shutdown completed.
+17:52:03.826 [main] [INFO ] - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+17:52:03.852 [main] [ERROR] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9090 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9090 or configure this application to listen on another port.
+
