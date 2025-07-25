@@ -3,10 +3,12 @@ package com.example.coffehub.repository;
 import com.example.coffehub.entity.CheckEntity;
 import com.example.coffehub.entity.ProductEntity;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Repository
 public abstract class CheckRepository extends CommonRepository {
@@ -16,17 +18,30 @@ public abstract class CheckRepository extends CommonRepository {
         super(entityManager);
     }
 
-    public static void save(CheckEntity check) {
+
+
+    public void  addToCheck(Integer checkId, Integer locationId, Integer productId, Integer quantity){
+        Query query = entityManager.createNativeQuery("call coffe_hub.addToCheck(?,?,?,?)");
+        query.setParameter(1, checkId)
+                .setParameter(2, locationId)
+                .setParameter(3, productId)
+                .setParameter(4, quantity);
     }
 
-    public abstract ResponseEntity addToCheck(BigInteger checkId, BigInteger productId);
 
-    public abstract ResponseEntity removeProduct(BigInteger productId);
 
-    public abstract ResponseEntity removeAll(BigInteger checkId, ProductEntity product);
+    public CheckEntity getActiveCheck(BigInteger checkId){
 
-    public CheckEntity findById(BigInteger checkId) {
+        Query query = entityManager.createNativeQuery("call coffe_hub.getActiveCheck(?)");
+        query.setParameter(1, checkId);
+        List<?> result = execute(query);
+        if(result.size() == 0) {
+            return null;
+
+        }
+
+        return  (CheckEntity)result.get(0);
+
     }
-
-    public abstract ResponseEntity clearCheck(BigInteger checkId, ProductEntity product);
 }
+

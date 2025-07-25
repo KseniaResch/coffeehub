@@ -27,73 +27,15 @@ public class CheckServiceImpl extends CheckRepository {
     }
 
     @Override
-    public ResponseEntity addToCheck(BigInteger checkId, BigInteger productId) {
-       if (productId == null || checkId == null) {
-           throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing required fields");
-       }
+    public ResponseEntity addToCheck(Integer checkId, Integer locationId, Integer productId, Integer quantity) {
 
-       CheckEntity check = new CheckEntity();
-       ProductEntity product = new ProductEntity();
+        checkRepository.addToCheck(checkId, locationId, productId, quantity);
 
-    BigDecimal currentTotal = check.getTotal();
-    if (currentTotal == null) {
-        currentTotal = BigDecimal.ZERO;
-    }
-    BigDecimal newTotal = currentTotal.add(product.getPrice());
-    check.setTotal(newTotal);
-    CheckRepository.save(check);
 
-    return ResponseEntity.ok("Product added to check. New total: " + newTotal);
-    }
-
-    @Override
-    public ResponseEntity removeProduct(BigInteger productId){
-        if (productId == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing required fields");
-        }
-        CheckEntity check = new CheckEntity();
-        ProductEntity product = new ProductEntity();
-        BigDecimal currentTotal = check.getTotal();
-        if (currentTotal == null) {
-            currentTotal = BigDecimal.ZERO;
-        }
-        BigDecimal newTotal = currentTotal.subtract(product.getPrice());
-        check.setTotal(newTotal);
-        CheckRepository.save(check);
-        return ResponseEntity.ok("Product removed from check. New total: " + newTotal);
-
+        return ResponseEntity.ok("Product added to check. New total: " );
     }
 
 
-    @Override
-    public ResponseEntity removeAll(BigInteger checkId, ProductEntity product){
-        if (checkId == null || product == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing required fields");
 
-        }
-        CheckEntity check = new CheckEntity();
-        List <ProductEntity> products = new ArrayList<ProductEntity>();
-        products.removeAll(products);
-        check.setTotal(BigDecimal.ZERO);
-        CheckRepository.save(check);
-        return ResponseEntity.ok("Products removed from check. New total: " + check.getTotal());
-
-
-    }
-
-    @Override
-    public ResponseEntity clearCheck (BigInteger checkId, ProductEntity product){
-        if (checkId == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing required fields");
-        }
-        CheckEntity check = checkRepository.findById(checkId);
-        if (check == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Check not found");
-        }
-       return ResponseEntity.ok("Check removed from check. New total: " + check.getTotal());
-
-    }
-
-
-    }
+}
 
