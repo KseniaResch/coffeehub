@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-import java.lang.ScopedValue;
+
 import java.math.BigInteger;
 import java.util.List;
 
