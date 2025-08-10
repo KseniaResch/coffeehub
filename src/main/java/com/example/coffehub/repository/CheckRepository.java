@@ -17,7 +17,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @Repository
-public abstract class CheckRepository extends CommonRepository {
+public  class CheckRepository extends CommonRepository {
 
 
     public CheckRepository(EntityManager entityManager) {
