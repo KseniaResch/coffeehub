@@ -8,6 +8,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -19,6 +20,6 @@ public class CheckEntity {
 
     @Column(nullable = false)
     private BigDecimal total;
-
+    private LocalDateTime dttm;
     private BigDecimal discount;
 }

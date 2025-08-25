@@ -1,6 +1,7 @@
 package com.example.coffehub.sevice.impl;
 
 import com.example.coffehub.dto.CheckDto;
+import com.example.coffehub.dto.ResponseDto;
 import com.example.coffehub.entity.CheckEntity;
 import com.example.coffehub.mapper.CheckMapper;
 import com.example.coffehub.repository.CheckRepository;
@@ -8,6 +9,7 @@ import com.example.coffehub.sevice.CheckService;
 import com.example.coffehub.sevice.ProductService;
 import jakarta.persistence.EntityManager;
 import org.hibernate.annotations.Check;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,40 +20,42 @@ import org.springframework.web.server.ResponseStatusException;
 public class CheckServiceImpl implements CheckService {
 
 
+
     private final CheckRepository checkRepository;
     private ProductService productService;
     @Value("${location-id}")
     private int locationId;
     private CheckMapper checkMapper;
 
-    public CheckServiceImpl( CheckRepository checkRepository) {
+    public CheckServiceImpl(CheckRepository checkRepository, CheckMapper checkMapper) {
         this.checkRepository = checkRepository;
+        this.checkMapper = checkMapper;
     }
 
     @Override
-    public ResponseEntity addToCheck(Integer checkId, Integer locationId, Integer productId, Integer quantity) {
+    public ResponseDto addToCheck(Integer checkId, Integer locationId, Integer productId, Integer quantity) {
 
         checkRepository.addToCheck(checkId, locationId, productId, quantity);
 
 
-        return ResponseEntity.ok("Product added to check. New total: " );
+        return new ResponseDto ("Product added to check.", 200, null);
     }
 
     @Override
-    public ResponseEntity closeCheck(Integer checkId) {
+    public ResponseDto closeCheck(Integer checkId) {
 
         try {
             checkRepository.closeCheck(checkId);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            return new ResponseDto(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value(), null);
         }
-        return ResponseEntity.ok("Check closed.");
+        return new ResponseDto("Check closed.", 200, null);
     }
 
     @Override
-    public CheckDto openCheck() {
+    public ResponseDto openCheck() {
         CheckEntity checkEntity =  checkRepository.openCheck(locationId);
-        return checkMapper.toDto(checkEntity);
+        return new ResponseDto("ok", 200, checkMapper.toDto(checkEntity));
 
     }
 

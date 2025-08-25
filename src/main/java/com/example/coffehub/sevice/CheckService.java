@@ -1,16 +1,17 @@
 package com.example.coffehub.sevice;
 
 import com.example.coffehub.dto.CheckDto;
+import com.example.coffehub.dto.ResponseDto;
 import com.example.coffehub.entity.CheckEntity;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigInteger;
 
 public interface CheckService {
-    ResponseEntity addToCheck(Integer checkId, Integer locationId, Integer productId, Integer quantity);
+    ResponseDto addToCheck(Integer checkId, Integer locationId, Integer productId, Integer quantity);
 
 
-    ResponseEntity closeCheck(Integer checkId);
+    ResponseDto closeCheck(Integer checkId);
 
-    CheckDto openCheck();
+    ResponseDto openCheck();
 }

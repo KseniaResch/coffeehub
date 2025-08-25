@@ -33,6 +33,7 @@ public  class CheckRepository extends CommonRepository {
                 .setParameter(2, locationId)
                 .setParameter(3, productId)
                 .setParameter(4, quantity);
+        execute(query);
     }
 
 
@@ -62,6 +63,7 @@ public  class CheckRepository extends CommonRepository {
     public CheckEntity openCheck(Integer locationId) {
         Query q = entityManager.createNativeQuery("CALL coffe_hub.open_check(?)", CheckEntity.class);
         q.setParameter(1, locationId);
+
         return (CheckEntity) execute(q).get(0);
     }
 
